@@ -1,5 +1,7 @@
+//established "product-container" from the HTML file
 const container = document.getElementById('product-container');
-c
+
+//this will plug in data from the source page, log each products name, and catch any errors 
 function fetchProductsThen() {
     fetch('https://www.course-api.com/javascript-store-products')
     .then((response) => {
@@ -18,8 +20,10 @@ function fetchProductsThen() {
     });
 }
 
+//calls the function above, so it runs on the webpage
 fetchProductsThen();
 
+//fetches and sends products to displayProducts(), catches any errors
 async function fetchProductsAsync() {
     try{
         const response = await fetch('https://www.course-api.com/javascript-store-products');
@@ -33,3 +37,27 @@ async function fetchProductsAsync() {
     }
 }
 
+//Displays 5 products with name, image, and price 
+function displayProducts(products) {
+    container.innerHTML = '';
+    for(let i = 0; i < 5; i++) {
+        const product = products[i];
+        const productDiv = document.createElement('div');
+
+        const name = document.createElement('p');
+        name.textContent = product.fields.name;
+
+        const img = document.createElement('img');
+        img.src = product.fields.image[0].url;
+        img.alt = product.fields.name;
+
+        const price = document.createElement('p');
+        price.textContent = `$${(product.fields.price / 100).toFixed(2)}`;
+
+        productDiv.appendChild(img);
+        productDiv.appendChild(name);
+        productDiv.appendChild(price);
+        container.appendChild(productDiv);
+
+    }
+}
