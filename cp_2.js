@@ -45,6 +45,7 @@ function displayProducts(products) {
     for(let i = 0; i < 5; i++) {
         const product = products[i];
         const productDiv = document.createElement('div');
+        productDiv.classList.add('product-card');
 
         const name = document.createElement('p');
         name.textContent = product.fields.name;
@@ -68,3 +69,4 @@ function displayProducts(products) {
 fetchProductsThen();
 
 fetchProductsAsync();
+
