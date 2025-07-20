@@ -23,6 +23,11 @@ function fetchProductsThen() {
 //calls the function above, so it runs on the webpage
 fetchProductsThen();
 
+//established the handleError() function
+function handleError(error) {
+    console.error('Looks like something went wrong...', error.message);
+}
+
 //fetches and sends products to displayProducts(), catches any errors
 async function fetchProductsAsync() {
     try{
@@ -36,6 +41,9 @@ async function fetchProductsAsync() {
         handleError(error);
     }
 }
+
+//calls the above function
+fetchProductsAsync();
 
 //Displays 5 products with name, image, and price 
 function displayProducts(products) {
