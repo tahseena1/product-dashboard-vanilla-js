@@ -1,3 +1,5 @@
+const container = document.getElementById('product-container');
+c
 function fetchProductsThen() {
     fetch('https://www.course-api.com/javascript-store-products')
     .then((response) => {
